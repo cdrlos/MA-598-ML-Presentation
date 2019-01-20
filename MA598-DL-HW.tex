@@ -1,0 +1,44 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage{preamble}
+
+\def\myname{My Name}
+\def\artT{MA 999}
+\def\artsub{math}
+\def\hwno{0}
+\def\due{February 22, 2222}
+
+\hypersetup{
+  pdfauthor={\myname{}},
+  pdftitle={\artT{} PS \hwno{}},
+  pdfsubject={\artsub{}}
+}
+
+%% Onsided documents with two-sided footers
+\usepackage{pdftexcmds}
+\makeatletter
+\newcommand*{\test}[2]{%
+  \ifnum\pdf@strcmp{#1}{#2}=\z@ \relax \else #2 \fi
+}
+\makeatother
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{\fancyplain{}{\slshape\MakeUppercase{\artT{} Homework \hwno{}}}}
+\rhead{\fancyplain{}{\slshape\MakeUppercase{Problem \theproblem}} }
+\cfoot{}
+\rfoot{page \fancyplain{}{\slshape\thepage{} of \pageref{LastPage}}}
+
+% \setcounter{page}{0}
+\begin{document}
+\title{\artT{} Problem Set \hwno{}}
+\author{\myname{}}
+\date{\due{}}
+\maketitle
+
+\setcounter{section}{\hwno}
+\numberwithin{problem}{section}
+\numberwithin{equation}{section}
+
+% \input{\classhort-PS-\hwno}
+% \printbibliography
+\end{document}
