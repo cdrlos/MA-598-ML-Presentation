@@ -9,22 +9,6 @@
   \renewcommand*{\familydefault}{\sfdefault}
 }
 
-\newif\if@slides\@slidesfalse
-\DeclareOption{slides}{
-  \@slidestrue
-}
-
-\newif\if@times\@timesfalse
-\DeclareOption{times}{
-  \@timestrue
-}
-
-\newif\if@palatino\@palatinofalse
-\DeclareOption{palatino}{
-  \@palatinotrue
-}
-
-
 %% 'roman' option
 \DeclareOption{roman}{
   \renewcommand*{\familydefault}{\rmdefault}
@@ -34,81 +18,40 @@
 
 \ProcessOptions\relax
 
-%% Customizable symbols
-\RequirePackage{ifxetex}
-
 \AtBeginDocument{
 
 \providecommand\QED{\ensuremath{\Square}}
 \newcommand\QEDsol{\ensuremath{\Diamond}}
-\if@times
-\let\phi\varphi \let\epsilon\varepsilon
-\renewcommand\QEDsol{\ensuremath{\vardiamondsuit}}
-\fi
 
 \let\bigsetminus\setminus \let\setminus\smallsetminus
-\ifxetex
-\let\A\bfA
-\let\I\bfI
-\let\N\bfN
-\let\Z\bfZ
-\let\Q\bfQ
-\let\F\bfF
-\let\k\bfk
-\let\K\bfK
-\let\R\bfR
-\let\C\bfC
-\else
-
-\if@slides
-\renewcommand\QED{\ensuremath{\scriptstyle\blacksquare}}
-\renewcommand\QEDsol{\ensuremath{\vardiamondsuit}}
-\let\A\bfA
-\let\I\bfI
-\let\N\bfN
-\let\Z\bfZ
-\let\Q\bfQ
-\let\F\bfF
-\let\k\bfk
-\let\K\bfK
-\let\R\bfR
-\let\C\bfC
-% \let\H\bfH
-\let\RP\bfRP
-\let\CP\bfCP
-\let\HP\bfHP
-\else
-\let\A\bbA
-\let\I\bbI
-\let\N\bbN
-\let\Z\bbZ
-\let\Q\bbQ
-\let\F\bbF
-\let\k\bbk
-\let\K\bbK
-\let\R\bbR
-\let\C\bbC
+% \let\A\bbA
+% \let\I\bbI
+% \let\N\bbN
+% \let\Z\bbZ
+% \let\Q\bbQ
+% \let\F\bbF
+% \let\k\bbk
+% \let\K\bbK
+% \let\R\bbR
+% \let\C\bbC
 % \let\H\bbH
-\let\RP\bbRP
-\let\CP\bbCP
-\let\HP\bbHP
-\fi\fi
+% \let\RP\bbRP
+% \let\CP\bbCP
+% \let\HP\bbHP
 }
 
+%%% Useful packages
+\RequirePackage{microtype}
+\RequirePackage{lastpage}
+\RequirePackage[backend=biber,style=alphabetic]{biblatex}
+
 %% Math and formatting packages
-\RequirePackage{multicol}
 \RequirePackage{amssymb,amsthm}
-\RequirePackage{yhmath}
-\let\ring\relax
 \RequirePackage{mathtools}
 \RequirePackage{thmtools}
 \mathtoolsset{mathic=true}
 \RequirePackage{mleftright} % remove space before after \left.\right.
 \mleftright%
-%%% Useful packages
-\RequirePackage{microtype}
-\RequirePackage{lastpage}
-\RequirePackage[backend=biber,style=alphabetic]{biblatex}
 
 \DeclareLabelalphaTemplate{
   \labelelement{
@@ -120,53 +63,27 @@
 
 \DeclareFieldFormat{extraalpha}{#1}%
 % \renewcommand*{\thefootnote}{\fnsymbol{footnote}}
-\ifxetex
-\RequirePackage{unicode-math}
-\if@times
-\setmainfont{STIX2Text-Regular.otf}
-\setmathfont{STIX2Math.otf}
-\fi
 
-\else
 %% Languages and fonts 
-\RequirePackage[T2A,T1]{fontenc}
+\RequirePackage[T1]{fontenc}
 \RequirePackage[utf8]{inputenc}
-\RequirePackage[main=english,french,german,spanish,russian]{babel}
-
-\if@times
-%\RequirePackage[upint]{stix2}
-\RequirePackage{stix}
-
-\else
-\if@palatino
-% \let\widering\relax
-% \RequirePackage{newpxtext}
-% \RequirePackage[varg,bigdelims]{newpxmath}
-\RequirePackage{mathpazo}
-\RequirePackage{eulervm}
-\else
 
 %% Cool symbols
 \RequirePackage[heavycircles]{stmaryrd}
 \RequirePackage[nointegrals]{wasysym}
 \RequirePackage{esint}
-% \RequirePackage[lighttt]{lmodern}
+\RequirePackage[lighttt]{lmodern}
 \RequirePackage[cal=euler,scr=rsfso]{mathalfa}
 
 \if@sans
-\RequirePackage{esint}
-\DeclareSymbolFont{extraup}{U}{zavm}{m}{n}
-\DeclareMathSymbol{\varheartsuit}{\mathalpha}{extraup}{86}
-\DeclareMathSymbol{\vardiamondsuit}{\mathalpha}{extraup}{87}
 \RequirePackage{sansmathfonts}
-\else\if@slides
-\RequirePackage{lxfonts}
-\fi\fi\fi\fi\fi
+\else
 
 %% Have the beamer Math punctuation match the sans font of the document 
 \@ifclassloaded{beamer}
 {
-\RequirePackage{lxfonts}
+%\RequirePackage{lxfonts}
+\RequirePackage{sansmathfonts}
 \usefonttheme{professionalfonts}
 \mathcode`;=\numexpr\mathcode`;-"6000
 \mathcode`:=\numexpr\mathcode`;-"6000
@@ -268,29 +185,6 @@ numbered=no,
 %% TikZ stuff
 \@ifclassloaded{standalone}{
   \RequirePackage{tikz}\usetikzlibrary{cd,arrows,calc,decorations.pathmorphing,shapes}
-  \if@times
-  \newcommand{\tikzcdarrowdimens}[2]{%
-    \tikzcdset{every arrow/.append style={line width=#1}}%
-    \pgfmathdeclarefunction*{axis_height}{0}{%
-        \begingroup%      
-        \pgfmathreturn#2%
-        \endgroup%
-      }%
-  }
-
-  \tikzcdset{arrow style=math font}
-  \tikzcdarrowdimens{0.068em}{0.259em}%
-  \else
-  \if@slides
-  \tikzcdset{every arrow/.append style={line width=0.52pt}}%smaller    
-  \pgfmathdeclarefunction*{axis_height}{0}{%
-     \begingroup%      
-       \pgfmathreturn2.65pt % smaller than the original
-       \endgroup}
-     \else\if@palatino
-  \tikzcdset{arrow style=math font}
-   \fi\fi
-   \fi
 }
 
 %% Enumerate 
@@ -395,9 +289,6 @@ numbered=no,
 \newcommand\nto{\arrownot\to}
 \newcommand\nfrom{\arrownot\leftarrow}
 \newcommand{\sur}{\mathrel{\mathrlap{\rightarrow}\mkern-2.5mu\rightarrow}}
-\if@times
-\renewcommand\sur{\twoheadrightarrow}
-\fi
 \newcommand{\nimplies}{%
   \mathrel{{\ooalign{\hidewidth$\not\phantom{=}$\hidewidth\cr$\implies$}}}}
 \newcommand\act{\curvearrowright}
@@ -612,6 +503,7 @@ numbered=no,
 %% Some special groups (mostly Lie groups)
 \DeclareMathOperator{\GL}{GL}
 \renewcommand{\O}{\operatorname{O}}
+\let\U\empty
 \renewcommand{\U}{\operatorname{U}}
 \DeclareMathOperator{\SL}{SL}
 \DeclareMathOperator{\SO}{SO}
