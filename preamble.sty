@@ -77,12 +77,12 @@
 
 \if@sans
 \RequirePackage{sansmathfonts}
-\else
+\fi
 
 %% Have the beamer Math punctuation match the sans font of the document 
 \@ifclassloaded{beamer}
 {
-%\RequirePackage{lxfonts}
+% \RequirePackage{lxfonts}
 \RequirePackage{sansmathfonts}
 \usefonttheme{professionalfonts}
 \mathcode`;=\numexpr\mathcode`;-"6000
