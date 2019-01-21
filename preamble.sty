@@ -85,9 +85,8 @@
 % \RequirePackage{lxfonts}
 \RequirePackage{sansmathfonts}
 \usefonttheme{professionalfonts}
-\mathcode`;=\numexpr\mathcode`;-"6000
-\mathcode`:=\numexpr\mathcode`;-"6000
-\mathcode`,=\numexpr\mathcode`;-"6000
+\DeclareMathSymbol{,}{\mathpunct}{operators}{"2C}
+\DeclareMathSymbol{.}{\mathpunct}{operators}{"2E}
 } 
 
 \@ifclassloaded{article}{
