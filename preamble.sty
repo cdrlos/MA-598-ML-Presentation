@@ -173,6 +173,7 @@
 \mathcode`,=\numexpr\mathcode`;-"6000
 } 
 
+\@ifclassloaded{article}{
 %% Theorems etc.
 %Plain environments:
 \theoremstyle{plain}
@@ -227,9 +228,9 @@ numbered=no,
 \declaretheorem[sharenumber=theorem,style=exstyle]{exercise}
 \declaretheorem[sharenumber=theorem,style=exstyle]{problem}
 \declaretheorem[style=solstyle]{solution}
+}
 
 %% Text commands
-\newcommand{\newpg}{\newpage}
 \newcommand{\textsup}[1]{\textsuperscript{#1}}
 \newcommand{\textsub}[1]{\textsubscript{#1}}
 
