@@ -3,6 +3,11 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{preamble}[2017/09/26 v2.2 my bare-bones setup]
 
+\newif\if@times\@timesfalse
+\DeclareOption{times}{
+  \@timestrue
+}
+
 \newif\if@sans\@sansfalse
 \DeclareOption{sans}{
   \@sanstrue
@@ -69,6 +74,9 @@
 \RequirePackage[utf8]{inputenc}
 
 %% Cool symbols
+\if@times
+\RequirePackage{stix2}
+\else
 \RequirePackage[heavycircles]{stmaryrd}
 \RequirePackage[nointegrals]{wasysym}
 \RequirePackage{esint}
@@ -77,6 +85,7 @@
 
 \if@sans
 \RequirePackage{sansmathfonts}
+\fi
 \fi
 
 %% Have the beamer Math punctuation match the sans font of the document 
