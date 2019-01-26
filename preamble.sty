@@ -3,11 +3,6 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{preamble}[2017/09/26 v2.2 my bare-bones setup]
 
-\newif\if@times\@timesfalse
-\DeclareOption{times}{
-  \@timestrue
-}
-
 \newif\if@sans\@sansfalse
 \DeclareOption{sans}{
   \@sanstrue
@@ -29,20 +24,37 @@
 \newcommand\QEDsol{\ensuremath{\Diamond}}
 
 \let\bigsetminus\setminus \let\setminus\smallsetminus
-% \let\A\bbA
-% \let\I\bbI
-% \let\N\bbN
-% \let\Z\bbZ
-% \let\Q\bbQ
-% \let\F\bbF
-% \let\k\bbk
-% \let\K\bbK
-% \let\R\bbR
-% \let\C\bbC
-% \let\H\bbH
-% \let\RP\bbRP
-% \let\CP\bbCP
-% \let\HP\bbHP
+\if@sans
+\let\A\bfA
+\let\I\bfI
+\let\N\bfN
+\let\Z\bfZ
+\let\Q\bfQ
+\let\F\bfF
+\let\k\bfk
+\let\K\bfK
+\let\R\bfR
+\let\C\bfC
+\let\H\bfH
+\let\RP\bfRP
+\let\CP\bfCP
+\let\HP\bfHP
+\else
+\let\A\bbA
+\let\I\bbI
+\let\N\bbN
+\let\Z\bbZ
+\let\Q\bbQ
+\let\F\bbF
+\let\k\bbk
+\let\K\bbK
+\let\R\bbR
+\let\C\bbC
+\let\H\bbH
+\let\RP\bbRP
+\let\CP\bbCP
+\let\HP\bbHP
+\fi
 }
 
 %%% Useful packages
@@ -74,18 +86,15 @@
 \RequirePackage[utf8]{inputenc}
 
 %% Cool symbols
-\if@times
-\RequirePackage{stix2}
-\else
+
 \RequirePackage[heavycircles]{stmaryrd}
 \RequirePackage[nointegrals]{wasysym}
 \RequirePackage{esint}
-\RequirePackage[lighttt]{lmodern}
+% \RequirePackage[lighttt]{lmodern}
 \RequirePackage[cal=euler,scr=rsfso]{mathalfa}
 
 \if@sans
 \RequirePackage{sansmathfonts}
-\fi
 \fi
 
 %% Have the beamer Math punctuation match the sans font of the document 
@@ -446,8 +455,10 @@ numbered=no,
 }%
 {\end{smallmatrix}\right)}
 
-%%% Operators by category 
-%% Set theory
+%%% Operators by category
+%% Information Theory
+%% Computer Science
+%% Set Theory
 \DeclareMathOperator{\card}{card}
 \DeclareMathOperator{\Card}{Card}
 \DeclareMathOperator{\codom}{codom}
@@ -461,13 +472,13 @@ numbered=no,
 \DeclareMathOperator{\preim}{preim}
 \DeclareMathOperator{\Preim}{Preim}
 
-%% Number theory
+%% Number Theory
 \DeclareMathOperator*{\lcm}{lcm}
 \DeclareMathOperator{\disc}{disc}
 \DeclareMathOperator{\Disc}{Disc}
 \DeclareMathOperator{\Nm}{Nm}
 
-%%% Category theory
+%%% Category Theory
 \DeclareMathOperator{\ev}{ev}
 \DeclareMathOperator{\Ev}{Ev}
 \DeclareMathOperator{\eval}{eval}
@@ -566,7 +577,7 @@ numbered=no,
 \DeclareMathOperator{\SPAN}{Span}
 \DeclareMathOperator{\Sym}{Sym}
 
-%% Group theory
+%% Group Theory
 \DeclareMathOperator{\Dim}{Dim}
 \DeclareMathOperator{\ord}{ord}
 % \DeclareMathOperator{\Ord}{Ord}
@@ -574,14 +585,14 @@ numbered=no,
 \DeclareMathOperator{\Sgn}{Sgn}
 \DeclareMathOperator{\Syl}{Syl}
 
-%% Model theory
+%% Model Theory
 \DeclareMathOperator{\Th}{Th}
 
 %% Hyperreals
 \DeclareMathOperator{\hal}{hal}
 \DeclareMathOperator{\shad}{sh}
 
-%% Group actions and representation theory
+%% Group actions and representation Theory
 \DeclareMathOperator{\Aut}{Aut}
 \DeclareMathOperator{\Fix}{Fix}
 \DeclareMathOperator{\Inn}{Inn}
@@ -589,7 +600,7 @@ numbered=no,
 \DeclareMathOperator{\Orb}{Orb}
 \DeclareMathOperator{\Stab}{Stab}
 
-%% Ring theory and commutative algebra
+%% Ring Theory and commutative algebra
 \DeclareMathOperator{\Ass}{Ass}
 \DeclareMathOperator{\Class}{Class}
 \DeclareMathOperator{\Ext}{Ext}
@@ -606,7 +617,7 @@ numbered=no,
 \DeclareMathOperator{\MSpec}{MaxSpec}
 \DeclareMathOperator{\Tor}{Tor}
 
-%% Field theory and Galois theory
+%% Field Theory and Galois Theory
 \DeclareMathOperator{\Ch}{ch}
 \DeclareMathOperator{\Char}{char}
 \DeclareMathOperator{\sepdeg}{sep\,deg}
@@ -627,7 +638,7 @@ numbered=no,
 \DeclareMathOperator{\ins}{ins}
 \DeclareMathOperator{\out}{out}
 
-%% Algebraic number theory
+%% Algebraic number Theory
 \DeclareMathOperator{\Frob}{Frob}
 
 %% Algebraic topology
@@ -679,19 +690,19 @@ numbered=no,
 \newcommand{\varbfRP}{\bfR\rmP}
 
 %%% Analysis
-%% Metric spaces
+%% Metric Spaces
 \DeclareMathOperator{\diam}{diam}
 \DeclareMathOperator{\dist}{dist}
 \DeclareMathOperator{\Isom}{Isom}
 \DeclareMathOperator{\supp}{supp}
 \DeclareMathOperator{\Supp}{Supp}
 
-%% Real analysis
+%% Real Analysis
 \DeclareMathOperator{\Lip}{Lip}
 \newcommand\der{\mathop{}\!d}
 \DeclareMathOperator{\var}{var}
 
-%% Complex analysis
+%% Complex Analysis
 \DeclareMathOperator{\Arg}{Arg}
 \renewcommand\Im{\operatorname{Im}}
 \renewcommand\Re{\operatorname{Re}}
@@ -700,23 +711,25 @@ numbered=no,
 \DeclareMathOperator{\res}{res}
 \DeclareMathOperator{\Res}{Res}
 
-%% Multivariable calculus
+%% Multivariable Calculus
 \DeclareMathOperator{\curl}{curl}
 \let\division\div
 \renewcommand{\div}{\operatorname{div}}
 \DeclareMathOperator{\grad}{grad}
 
-%% Measure theory
+%% Measure Theory
 \DeclareMathOperator{\vol}{vol}
 \DeclareMathOperator{\Vol}{Vol}
 
-%% Probability and statistics
+%% Probability and Statistics
 \DeclareMathOperator{\corr}{corr}
 \DeclareMathOperator{\Corr}{Corr}
 \DeclareMathOperator{\cov}{cov}
 \DeclareMathOperator{\Cov}{Cov}
 \DeclareMathOperator{\erf}{erf}
 \DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
 
 %%% Distributions (continuous and dicrete)
 \DeclareMathOperator{\Bernoulli}{Bernoulli}
@@ -741,10 +754,10 @@ numbered=no,
 \DeclareMathOperator{\Uniform}{Uniform}
 
 %% Functional Analysis
-\DeclareMathOperator*{\dirlim}{dir\, lim}
-\DeclareMathOperator*{\invlim}{inv\, lim}
-\DeclareMathOperator*{\esssup}{ess\, sup}
-\DeclareMathOperator*{\essinf}{ess\, inf}
+\DeclareMathOperator*{\dirlim}{dir\,lim}
+\DeclareMathOperator*{\invlim}{inv\,lim}
+\DeclareMathOperator*{\esssup}{ess\,sup}
+\DeclareMathOperator*{\essinf}{ess\,inf}
 
 %%% Math alphabet 
 \newcommand{\rma}{\mathrm{a}}
