@@ -7,8 +7,8 @@
 
 \usepackage[sans]{preamble}
 
-\usetheme{Rochester}
-\usecolortheme{seagull}
+\usetheme{Warsaw}
+\usecolortheme{beaver}
 
 \title[Approximation by a Sigmoidal Function] 
 {Approximation by Superpositions of a Sigmoidal Function}
@@ -32,27 +32,88 @@
 \begin{frame}{Introduction}
   We wish to approximate a function $f\colon\R^n\to\R$ by an expression of
   the form
-  \begin{equation}
-    \label{eq:lin-sig-aff}
+  \begin{equation*}
+    % \label{eq:lin-sig-aff}
     \sum_{j=1}^N \alpha_j\sigma(\bfy_j^\rmT\bfx+\theta_j),
-  \end{equation}
-  where $\bfy_j\in\R^n$ and $\alpha_j,\theta_j\in\R$ are fixed. This is exactly
-  a neural network with one hidden layer.
+  \end{equation*}
+  where $\bfy_j\in\R^n$ and $\alpha_j,\theta_j\in\R$ are fixed. This represents
+  exactly a neural network with one hidden layer.
 \end{frame}
 
 \begin{frame}{The Main Result}
-  The main result is the following:
+  The main result is the following theorem
   \begin{theorem}
-    For $\sigma$ a continuous sigmoidal function, finite sums of the form in
-    Equation \eqref{eq:lin-sig-aff}, i.e.,
+    For $\sigma$ a continuous sigmoidal function, finite sums of the form
     \[
       \sum_{j=1}^N \alpha_j\sigma(\bfy_j^\rmT\bfx+\theta_j),
     \]
-  are dense in $C(I_n)$.
+    are dense in $C(I_n)$.
   \end{theorem}
 \end{frame}
 
+\begin{frame}
+  The proof will rely on the following more general result
+  \begin{theorem}
+    Let $\sigma$ be continuous and discriminatory. Then the set of finite sums
+    of the form
+    \[
+      \sum_{j=1}^N \alpha_j\sigma(\bfy_j^\rmT\bfx+\theta_j),
+    \]
+    is dense in $C(I_n)$.
+  \end{theorem}
+  With this theorem at our disposal we need only show that sigmoidal functions
+  are discriminatory; that is, we will show that
+    \begin{lemma}
+      Any continuous sigmoidal function is discriminatory.
+  \end{lemma}
+\end{frame}
+
+\begin{frame}{Some Functional Analysis}
+  % The proof of the more general theorem relies on two important results from
+  % Functional Analysis; the Hahn-Banach Theorem and the Riesz Representation
+  % theorem.
+
+  % ; in
+  % particular, we make use of the ubiquitous Hahn--Banach Theorem as well as
+  % the
+  % Riesz Representation Theorem. We will not be using the Hahn--Banach in full
+  % generality, but rather, the following corollary
+  To prove Theorem 1 we will need a little bit of Functional Analysis. The
+  following result is a corollary of the Hahn--Banach Theorem.
+  \begin{corollary}[cf.\ Conway, p.\ 79]
+    If $\calX$ is a normed space, $\calM\subset\calX$ a subspace,
+    $x_0\in\calX\setminus\calM$, and $d=\dist(x_0,M)$, then there exists an
+    element $f$ of $\calX^*$ such that $f(x_0)=1$, $f(x)=0$ for all $x$ in
+    $\calM$, and $\Abs f=d^{-1}$.
+  \end{corollary}
+  Intuitively, this corollary says that given a subspace of a Banach space, we
+  can find a nonzero linear functional which is zero on that subspace.
+\end{frame}
+
+\begin{frame}
+  Now, the Riesz Representation Theorem:
+  \begin{theorem}[Riesz Representation Theorem% ; cf.\ Pedersen, p.\ 235
+    ]
+    % If $X$ is a locally compact space and $\mu\in\scrM(X)$, define
+    % $F_\mu\colon
+    % C_0(X)\to\F$ by
+    % \[
+    %   F_\mu(f)=\int_X f\der\mu.
+    % \]
+    % Then $F_\mu\in C_0(X)^*$ and the map $\mu\to F_\mu$ is an isometric
+    % isomorphism of $\scrM(X)$ onto $C_0(X)^*$.
+    If $\phi$ is a bounded linear functional on a Hilbert space $\scrH$, then
+    there exists an element $g$ of $\scrH$ such that for every $f$ in $\scrH$,
+    \[
+      \phi(f)=\gen{f,g}.
+    \]
+  \end{theorem}
+ % The intuitive understanding you should gather from this is that linear
+ % functionals can be represented by a ``filter'' of sorts. 
+\end{frame}
+
 \begin{frame}{Definitions}
+  Let's define a couple of these terms.
   \begin{definition}[Discriminatory functions]
     We say $\sigma$ is \emph{discriminatory} if given a measure $\mu$ on $I_n$
     \[
@@ -60,6 +121,7 @@
     \]
     for all $\bfy\in\R^n$ implies $\mu=0$.
   \end{definition}
+  And of course.
   \begin{definition}[Sigmoidal functions]
     We say that $\sigma$ is sigmoidal if
     \[
@@ -71,56 +133,40 @@
   \end{definition}
 \end{frame}
 
-\begin{frame}
-  The proof will rely on the following more general theorem:
-  \begin{theorem}
-    Let $\sigma$ be continuous and discriminatory. Then the set of finite sums
-    of the form
-    \[
-      \sum_{j=1}^N \alpha_j\sigma(\bfy_j^\rmT\bfx+\theta_j),
-    \]
-    is dense in $C(I_n)$.
-  \end{theorem}
+\begin{frame}{Proof of Theorem 1, Part 1}
+  % We can now begin the proof of Theorem 1: First, let $S$ be the set of
+  % continuous functions that we can exactly represent with our neural network.
+  % Clearly, $S$ is a linear subspace of $C(I_N)$. So, by Hahn-Banach, there is
+  % a
+  % nonzero bounded linear functional that vanishes on the closure of $S$ (the
+  % closure of $S$ is the set of functions we can approximate with our neural
+  % network).
+  Let $S=\set[\Big]{\sum_{j=1}^N
+    \alpha_j\sigma(\bfy_j^\rmT\bfx+\theta_j)}\subset C(I_n)$. Clearly $S$ is a
+  subspace of $C(I_n)$. We will show that the closure $R$ of $\bar S$ is
+  $C(I_n)$.
+
+  By the aforementioned corollary to the Hahn--Banach Theorem, there exist a
+  functional $L$ which is zero on $S$ but nonzero on $C(I_n)\setminus S$.
+  Moreover, by the Riesz Representation Theorem, $L$ is of the form
+  \[
+    L(h)=\int_{I_n}h(\bfx)\der\mu(\bfx),
+  \]
+  for some $\mu\in\scrM(I_n)$, for all $h\in C(I_n)$.
 \end{frame}
 
-\begin{frame}{Some Functional Analysis}
-  The proof of the more general theorem relies on two important results from
-  Functional Analysis; the Hahn-Banach Theorem and the Riesz Representation
-  theorem.
+\begin{frame}{Proof of Theorem 1, Part 2}
+  Since $\sigma(\bfy^\rmT\bfx+\theta)$ is in $R$ for all $\bfy,\theta$,
+  \[
+    \int_{I_n}\sigma(\bfy^\rmT\bfx+\theta)\der\mu(\bfx)=0,
+  \]
+  for all $\bfy,\theta$.
 
-  \begin{theorem}
-    lol cats 
-  \end{theorem}
-  A corrolary of this is what we use:
-
-  \begin{theorem}
-    lol kitty cats
-  \end{theorem}
-
-  The intuitive understanding you should gather from this is that if we have a
-  linear subspace of a Banach space, we can find a nonzero linear functional which is
-  zero on that linear subspace.
+  However, since $\sigma$ was assumed to be discriminatory, $\mu=0$
+  contradicting the assumption that $L$ is nonzero. Therefore, $R=C(I_n)$.
 \end{frame}
 
-\begin{frame}
-  Now, the Riesz Representation theorem:
-  \begin{theorem}
-    lol kitty kitty cats
-  \end{theorem}
- The intuitive understanding you should gather from this is that linear
- functionals can be represented by a ``filter'' of sorts. 
-\end{frame}
-
-\begin{frame}
-  We can now begin the proof of Theorem 1:
-  First, let $S$ be the set of continuous functions that we can exactly
-  represent with our neural network. Clearly, $S$ is a linear subspace of
-  $C(I_N)$. So, by Hahn-Banach, there is a nonzero bounded linear functional
-  that vanishes on the closure of $S$ (the closure of $S$ is the set of
-  functions we can approximate with our neural network). 
-\end{frame}
-
-\begin{frame}
+\begin{frame}{}
   Now, this linear functional has the form
   \[
 L(h) = \int_{I_n} h(x) d\mu(x)
@@ -136,11 +182,65 @@ But $\sigma(y^T x + \theta)$ is in $S$ for all $y$ and $\theta$. So,
 \end{frame}
 
 \begin{frame}
-  Next we need to show that sigmoidal functions are in fact discriminatory.
+  Next we need to show that the sigmoidal functions that we care about are in
+  fact discriminatory. That is, 
   \begin{lemma}
-    Any bounded, measurable sigmoidal function is discriminatory. In
-    particular,any continuous sigmoidal function is discriminatory.
+    Any bounded, measurable sigmoidal function is discriminatory. In particular,
+    any continuous sigmoidal function is discriminatory.
   \end{lemma}
+\end{frame}
+
+\begin{frame}{Sketch of the proof of Lemma 1, Part 1}
+  First we note that
+  \[
+    \sigma(\lambda(\bfy^\rmT\bfx+\theta)+\phi)
+    \begin{cases}
+      \to 1&\text{for $\bfy^\rmT\bfx+\theta>0$ as $\lambda\to+\infty$,}\\
+      \to 0&\text{for $\bfy^\rmT\bfx+\theta<0$ as $\lambda\to+\infty$,}\\
+      =\sigma(\phi)&\text{for $\bfy^\rmT\bfx+\theta=0$ for all $\lambda$.}
+    \end{cases}
+  \]
+  So $\sigma_\lambda(\bfx)\bdef\sigma(\lambda(\bfy^\rmT\bfx+\theta)+\phi)$
+  converges pointwise boundedly to the function
+  \[
+    \gamma(\bfx)=\begin{cases}
+      1&\text{for $\bfy^\rmT\bfx+\theta>0$,}\\
+      0&\text{for $\bfy^\rmT\bfx+\theta<0$,}\\
+      \sigma(\phi)&\text{for $\bfy^\rmT\bfx+\theta=0$,}
+    \end{cases}
+  \]
+  as $\lambda\to\infty$.
+\end{frame}
+
+\begin{frame}{Proof of Lemma 1, Part 2}
+  Now, let $\Pi_{\bfy,\theta}=\set{\bfx;\bfy^\rmT\bfx+\theta=0}$ and let
+  $H_{\bfy,\theta}=\set{\bfx;\bfy^\rmT\bfx+\theta>0}$. Then, by the Lebesgue
+  Bounded Convergence Theorem,
+  \begin{align*}
+    0&=\int_{I_n}\sigma_\lambda(\bfx)\der\mu(\bfx)\\
+     &=\int_{I_n}\gamma(\bfx)\der\mu(\bfx)\\
+     &=\sigma(\phi)\mu(\Pi_{\bfy,\theta})+\mu(H_{\bfy,\theta})
+  \end{align*}
+  for all $\phi,\theta,\bfy$.
+\end{frame}
+
+\begin{frame}{Proof of Lemma 1, Part 3}
+  The last thing we need to show is that if $\mu(H_{\bfy,\theta})=0$ for all
+  $\bfy,\theta$ implies $\mu=0$.
+
+  To that end, fix $\bfy$ and define the linear functional $F$ as follows
+  \[
+    F(h)=\int_{I_n} h(\bfy^T\bfx)\der\mu(\bfx).
+  \]
+  Note that $F$ is a bounded functional on $L^\infty(\R)$ since $\mu$ is a
+  finite signed measure.
+
+  Let $h=\chi_{[\theta,\infty)}$. Then
+  \[
+    F(h)=\int_{I_n}\chi_{[\theta,\infty)}(\bfy^\rmT\bfx)=
+    \mu(\Pi_{\bfy,-\theta})+\mu(H_{\bfy,-\theta})=0.
+  \]
+  Since the simple functions are dense in $L^\infty(\R)$, $F=0$.
 \end{frame}
 
 \begin{frame}
