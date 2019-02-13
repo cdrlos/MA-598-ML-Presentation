@@ -6,11 +6,14 @@
 \documentclass[11pt,letterpaper]{beamer}
 
 \usepackage[sans]{preamble}
-\setbeamertemplate{theorems}[numbered]
-\setbeamertemplate{items}[triangle]
+
+\addbibresource{references.bib}
 
 \usetheme{Warsaw}
-\usecolortheme{seagull}
+\usecolortheme{crane}
+\setbeamertemplate{theorems}[numbered]
+\setbeamertemplate{enumerate items}[triangle]
+\setbeamertemplate{itemize items}[triangle]
 
 \title[Approximation by a Sigmoidal Function] 
 {Approximation by Superpositions of a Sigmoidal Function}
@@ -34,21 +37,21 @@
 \begin{frame}{Introduction}
   In many Machine Learning applications the goal is to approximate a continuous
   function $f\colon\R^n\to\R$ by an expression of the form
-  \begin{equation}
-    \label{eq:lin-sig-aff}
+  \begin{equation*}
+    \tag{$\star$}
     \sum_{j=1}^N \alpha_j\sigma( y_j^\rmT x+\theta_j),
-  \end{equation}
+  \end{equation*}
   where $ y_j\in\R^n$ and $\alpha_j,\theta_j\in\R$ are fixed.
 
   In Machine Learning terminology, the $ y$ represent weights and the $\theta$
-  biases. Equation \eqref{eq:lin-sig-aff} models a fully connected network with
-  one hidden layer.
+  biases. Equation ($\star$) models a fully connected network with one hidden
+  layer.
 \end{frame}
 
 \begin{frame}{The Main Result}
   The author demonstrates that, theoretically, such an architecture is
   sufficient to approximate all continuous functions on the unit cube. That is,
-  \begin{theorem}[Theorem 2 in C89]
+  \begin{theorem}[Theorem 2 in \cite{cybenko}]
     For $\sigma$ a continuous sigmoidal function, finite sums of the form
     \[
       \sum_{j=1}^N \alpha_j\sigma( y_j^\rmT x+\theta_j),
@@ -59,7 +62,7 @@
 
 \begin{frame}
   The proof will rely on the following more general result
-  \begin{theorem}[Theorem 1 in C89]
+  \begin{theorem}[Theorem 1 in \cite{cybenko}]
     Let $\sigma$ be continuous and discriminatory. Then the set of finite sums
     of the form
     \[
@@ -69,7 +72,7 @@
   \end{theorem}
   With this theorem at our disposal we need only show that sigmoidal functions
   are discriminatory; that is, we will show that
-    \begin{lemma}[Lemma 1 in C89]
+    \begin{lemma}[Lemma 1 in \cite{cybenko}]
       Any continuous sigmoidal function is discriminatory.
   \end{lemma}
 \end{frame}
@@ -94,7 +97,7 @@
   \end{corollary}
   \begin{proof}
     The proof follows from the Hahn--Banach Theorem applied to the quotient
-    $V/W$. For details, see Corollary 6.8 in Conway, p.\ 79.
+    $V/W$. For details, see Corollary 6.8 in \cite{conway}, p.\ 79.
   \end{proof}
 \end{frame}
 
@@ -109,7 +112,7 @@
     the dual of $C_0(X)$.
   \end{theorem}
   \begin{proof}
-    See Conway, Theorem 5.7.
+    See \cite{conway}, Theorem 5.7.
   \end{proof}
   What the Riesz Representation Theorem is saying is that every bounded linear
   functional $L$ on $C_0(X)$ is of the form $L(f)=\int_X f\der \mu$ for some
@@ -222,41 +225,57 @@
 
 \begin{frame}{Proof of Lemma 3, Part 3}
   \begin{itemize}
-  \item The last thing we need to show is that if $\mu(H_{ y,\theta})=0$ for all
-    $ y,\theta$ implies $\mu=0$.
-  \item To that end, fix $ y$ and define the linear functional $F$ as follows
+  \item The author next shows that if $\mu(H_{ y,\theta})=0$ for all $ y,\theta$
+    then $\mu=0$.
+  \item Fix $y$ and define $F$ by
     \[
-      F(h)=\int_{I_n} h( y^T x)\der\mu( x).
+      F(h)=\int_{I_n} h( y^T x)\der\mu(x).
     \]
     Note that $F$ is a bounded functional on $L^\infty(\R)$ since $\mu$ is a
-    finite signed measure.
+    finite (signed) measure.
   \item Let $h=\chi_{[\theta,\infty)}$. Then
     \[
       F(h)=\int_{I_n}\chi_{[\theta,\infty)}( y^\rmT x)= \mu(\Pi_{
         y,-\theta})+\mu(H_{ y,-\theta})=0.
     \]
-    Since the simple functions are dense in $L^\infty(\R)$, $F=0$.
+  \item By linearity $L(h)=0$ for $h=\chi_{I}$ for $I$ any interval in $\R$.
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Proof of Lemma 3}
   \begin{itemize}
-  \item By linearity $L(h)=0$ for $h=\chi_{I}$ for $I$ any interval in $\R$.
-  \item Since simple functions are dense in $L^\infty(\R)$, $L=0$.
-  \item In particular, 
+  \item Since the simple functions are dense in $L^\infty(\R)$, $F=0$.
+  \item Let $s(u)=\sin(mu)$ and $c(u)=\cos(mu)$.
+  \item Then
+    \begin{align*}
+      L(c(m^\rmt x)+i s(m^\rmT x))
+      &=\int_{I_n}\cos(m^\rmT x)+i\sin(m^\rmT x)\der\mu(x)\\
+      &=\int_{I_n}\exp(i m^\rmT x)\der\mu(x)\\
+      &=0
+    \end{align*}
+    for all $m$.
+  \item Since the Fourier transform of $\mu$ is $0$, $\mu$ itself must be $0$.
+    For further details, consult \cite{rudin} Ch.\ 7.
+  \item Therefore, $\sigma$ is discriminatory.
   \end{itemize}
 \end{frame}
 
 \begin{frame}
   By the previous results the main theorem now follows as a corollary to theorem
   1 and lemma 2. That is, we have proven
-  \begin{theorem}[Theorem 2 in C89]
-    For $\sigma$ a continuous sigmoidal function, finite sums of the form in
-    Equation \eqref{eq:lin-sig-aff}, i.e.,
+
+  By Lemma 3 and Theorem 2, the main result follows
+  \setcounter{theorem}{0}
+  \begin{theorem}
+    For $\sigma$ a continuous sigmoidal function, finite sums of the form
     \[
       \sum_{j=1}^N \alpha_j\sigma( y_j^\rmT x+\theta_j),
     \]
   are dense in $C(I_n)$.
   \end{theorem}
+\end{frame}
+
+\begin{frame}{References}
+\printbibliography
 \end{frame}
 \end{document}
