@@ -77,6 +77,27 @@
   \end{lemma}
 \end{frame}
 
+\begin{frame}{Discriminatory and Sigmoidal Functions}
+  Let's define a couple of these terms.
+  \begin{definition}[Discriminatory functions]
+    We say $\sigma$ is \emph{discriminatory} if given a measure $\mu$ on $I_n$
+    \[
+      \int_{I_n}\sigma( y^\rmT x+\theta)\der\mu( x)=0
+    \]
+    for all $ y, \theta$ implies $\mu=0$.
+  \end{definition}
+  And of course.
+  \begin{definition}[Sigmoidal functions]
+    We say that $\sigma$ is sigmoidal if
+    \[
+      \begin{cases}
+        \sigma(t)\to 1&\text{as }t\to +\infty,\\
+        \sigma(t)\to 0&\text{as }t\to -\infty.
+      \end{cases}
+    \]
+  \end{definition}
+\end{frame}
+
 \begin{frame}{A Corollary of the Hahn--Banach Theorem}
   % The proof of the more general theorem relies on two important results from
   % Functional Analysis; the Hahn-Banach Theorem and the Riesz Representation
@@ -119,28 +140,9 @@
   measure $\mu$ on $X$.
 \end{frame}
 
-\begin{frame}{Discriminatory and Sigmoidal Functions}
-  Let's define a couple of these terms.
-  \begin{definition}[Discriminatory functions]
-    We say $\sigma$ is \emph{discriminatory} if given a measure $\mu$ on $I_n$
-    \[
-      \int_{I_n}\sigma( y^\rmT x+\theta)\der\mu( x)=0
-    \]
-    for all $ y\in\R^n$ implies $\mu=0$.
-  \end{definition}
-  And of course.
-  \begin{definition}[Sigmoidal functions]
-    We say that $\sigma$ is sigmoidal if
-    \[
-      \begin{cases}
-        \sigma(t)\to 1&\text{as }t\to +\infty,\\
-        \sigma(t)\to 0&\text{as }t\to -\infty.
-      \end{cases}
-    \]
-  \end{definition}
-\end{frame}
 
-\begin{frame}{Proof of Theorem 1, Part 1}
+
+\begin{frame}{Proof of Theorem 2, Part 1}
   % We can now begin the proof of Theorem 1: First, let $S$ be the set of
   % continuous functions that we can exactly represent with our neural network.
   % Clearly, $S$ is a linear subspace of $C(I_N)$. So, by Hahn-Banach, there is
@@ -153,9 +155,9 @@
       \alpha_j\sigma( y_j^\rmT x+\theta_j)}\subset C(I_n)$. Clearly $S$
     is a subspace of $C(I_n)$.
   \item The author proceeds by showing that the closure, $R$, of $S$ is
-    $C(I_n)$:
-  \item By Corollary 4, there exists a functional $L$ which is zero on $S$ but
-    nonzero on $C(I_n)\setminus S$.
+    $C(I_n)$, by contradiction:
+  \item By Corollary 4, there exists a functional $L$ which is zero on $R$ but
+    nonzero on $C(I_n)\setminus R$.
   \item By the Riesz Representation Theorem, $L$ is of the form
     \[
       L(h)=\int_{I_n}h(x)\der\mu(x),
@@ -164,7 +166,7 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Proof of Theorem 1, Part 2}
+\begin{frame}{Proof of Theorem 2, Part 2}
   \begin{itemize}
   \item Since $\sigma( y^\rmT x+\theta)$ is in $R$ for all $ y,\theta$,
     \[
@@ -180,10 +182,12 @@
 \begin{frame}{Sigmoidal Functions are Discriminatory}
   Next the author shows that the sigmoidal functions that we care about are in
   fact discriminatory. More generally, he shows that
+  \setcounter{theorem}{2}
   \begin{lemma}
     Any bounded, measurable sigmoidal function is discriminatory. In particular,
     any continuous sigmoidal function is discriminatory.
   \end{lemma}
+  \setcounter{theorem}{7}
 \end{frame}
 
 \begin{frame}{Proof of Lemma 3, Part 1}
@@ -239,10 +243,10 @@
     finite (signed) measure.
   \item Let $h=\chi_{[\theta,\infty)}$. Then
     \[
-      F(h)=\int_{I_n}\chi_{[\theta,\infty)}( y^\rmT x)= \mu(\Pi_{
+      F(h)=\int_{I_n}\chi_{[\theta,\infty)}( y^\rmT x) \der \mu(x)= \mu(\Pi_{
         y,-\theta})+\mu(H_{ y,-\theta})=0.
     \]
-  \item By linearity $L(h)=0$ for $h=\chi_{I}$ for $I$ any interval in $\R$.
+  \item By linearity $F(h)=0$ for $h=\chi_{I}$ for $I$ any interval in $\R$.
 \end{itemize}
 \end{frame}
 
@@ -252,7 +256,7 @@
   \item Let $s(u)=\sin(mu)$ and $c(u)=\cos(mu)$.
   \item Then
     \begin{align*}
-      L(c(m^\rmT x)+i s(m^\rmT x))
+      F(c(m^\rmT x)+i s(m^\rmT x))
       &=\int_{I_n}\cos(m^\rmT x)+i\sin(m^\rmT x)\der\mu(x)\\
       &=\int_{I_n}\exp(i m^\rmT x)\der\mu(x)\\
       &=0
