@@ -119,6 +119,7 @@
 \newtheorem{conjecture}[theorem]{Conjecture}
 \newtheorem{fact}[theorem]{Fact}
 \newtheorem{claim}[theorem]{Claim}
+\newtheorem{question}[theorem]{Question}
 
 \newtheorem*{claim*}{Claim}
 \newtheorem*{fact*}{Fact}
@@ -204,8 +205,7 @@ numbered=no,
   \RequirePackage{tikz}\usetikzlibrary{cd,arrows,calc,decorations.pathmorphing,shapes}
 }
 
-%% Enumerate
-\@ifclassloaded{beamer}{}{
+%% Enumerate 
 \RequirePackage{enumitem}%
 \newlist{Choices}{enumerate}{1}
 \setlist[Choices,1]{label=\textnormal{\llap{(\Alph*)}},nolistsep}%
@@ -217,7 +217,7 @@ numbered=no,
 \setlist[romlist,1]{label=\textnormal{\llap{(\roman*)}}}%
 \newlist{numlist}{enumerate}{3}
 \setlist[numlist,1]{label=\textnormal{\llap{(\arabic*)}}}%
-}
+
 %% For coding 
 \RequirePackage{listings}%
 \lstset{basicstyle=\ttfamily,breaklines=true}
@@ -579,6 +579,7 @@ numbered=no,
 \DeclareMathOperator{\Sym}{Sym}
 
 %% Group Theory
+\DeclareMathOperator{\FQ}{FQ}
 \DeclareMathOperator{\Dim}{Dim}
 \DeclareMathOperator{\ord}{ord}
 % \DeclareMathOperator{\Ord}{Ord}
