@@ -24,22 +24,6 @@
 \newcommand\QEDsol{\ensuremath{\Diamond}}
 
 \let\bigsetminus\setminus \let\setminus\smallsetminus
-\if@sans
-\let\A\bfA
-\let\I\bfI
-\let\N\bfN
-\let\Z\bfZ
-\let\Q\bfQ
-\let\F\bfF
-\let\k\bfk
-\let\K\bfK
-\let\R\bfR
-\let\C\bfC
-\let\H\bfH
-\let\RP\bfRP
-\let\CP\bfCP
-\let\HP\bfHP
-\else
 \let\A\bbA
 \let\I\bbI
 \let\N\bbN
@@ -54,7 +38,6 @@
 \let\RP\bbRP
 \let\CP\bbCP
 \let\HP\bbHP
-\fi
 }
 
 %%% Useful packages
@@ -82,16 +65,14 @@
 % \renewcommand*{\thefootnote}{\fnsymbol{footnote}}
 
 %% Languages and fonts 
-\RequirePackage[T1,T2A]{fontenc}
+\RequirePackage[T1]{fontenc}
 \RequirePackage[utf8]{inputenc}
-\RequirePackage[russian,spanish,german,french,english]{babel}
 
 %% Cool symbols
-
 \RequirePackage[heavycircles]{stmaryrd}
 \RequirePackage[nointegrals]{wasysym}
 \RequirePackage{esint}
-% \RequirePackage[lighttt]{lmodern}
+\RequirePackage[lighttt]{lmodern}
 \RequirePackage[cal=euler,scr=rsfso]{mathalfa}
 
 \if@sans
@@ -120,7 +101,6 @@
 \newtheorem{conjecture}[theorem]{Conjecture}
 \newtheorem{fact}[theorem]{Fact}
 \newtheorem{claim}[theorem]{Claim}
-\newtheorem{question}[theorem]{Question}
 
 \newtheorem*{claim*}{Claim}
 \newtheorem*{fact*}{Fact}
@@ -457,10 +437,8 @@ numbered=no,
 }%
 {\end{smallmatrix}\right)}
 
-%%% Operators by category
-%% Information Theory
-%% Computer Science
-%% Set Theory
+%%% Operators by category 
+%% Set theory
 \DeclareMathOperator{\card}{card}
 \DeclareMathOperator{\Card}{Card}
 \DeclareMathOperator{\codom}{codom}
@@ -474,13 +452,13 @@ numbered=no,
 \DeclareMathOperator{\preim}{preim}
 \DeclareMathOperator{\Preim}{Preim}
 
-%% Number Theory
+%% Number theory
 \DeclareMathOperator*{\lcm}{lcm}
 \DeclareMathOperator{\disc}{disc}
 \DeclareMathOperator{\Disc}{Disc}
 \DeclareMathOperator{\Nm}{Nm}
 
-%%% Category Theory
+%%% Category theory
 \DeclareMathOperator{\ev}{ev}
 \DeclareMathOperator{\Ev}{Ev}
 \DeclareMathOperator{\eval}{eval}
@@ -579,8 +557,7 @@ numbered=no,
 \DeclareMathOperator{\SPAN}{Span}
 \DeclareMathOperator{\Sym}{Sym}
 
-%% Group Theory
-\DeclareMathOperator{\FQ}{FQ}
+%% Group theory
 \DeclareMathOperator{\Dim}{Dim}
 \DeclareMathOperator{\ord}{ord}
 % \DeclareMathOperator{\Ord}{Ord}
@@ -588,14 +565,14 @@ numbered=no,
 \DeclareMathOperator{\Sgn}{Sgn}
 \DeclareMathOperator{\Syl}{Syl}
 
-%% Model Theory
+%% Model theory
 \DeclareMathOperator{\Th}{Th}
 
 %% Hyperreals
 \DeclareMathOperator{\hal}{hal}
 \DeclareMathOperator{\shad}{sh}
 
-%% Group actions and representation Theory
+%% Group actions and representation theory
 \DeclareMathOperator{\Aut}{Aut}
 \DeclareMathOperator{\Fix}{Fix}
 \DeclareMathOperator{\Inn}{Inn}
@@ -603,7 +580,7 @@ numbered=no,
 \DeclareMathOperator{\Orb}{Orb}
 \DeclareMathOperator{\Stab}{Stab}
 
-%% Ring Theory and commutative algebra
+%% Ring theory and commutative algebra
 \DeclareMathOperator{\Ass}{Ass}
 \DeclareMathOperator{\Class}{Class}
 \DeclareMathOperator{\Ext}{Ext}
@@ -620,7 +597,7 @@ numbered=no,
 \DeclareMathOperator{\MSpec}{MaxSpec}
 \DeclareMathOperator{\Tor}{Tor}
 
-%% Field Theory and Galois Theory
+%% Field theory and Galois theory
 \DeclareMathOperator{\Ch}{ch}
 \DeclareMathOperator{\Char}{char}
 \DeclareMathOperator{\sepdeg}{sep\,deg}
@@ -641,7 +618,7 @@ numbered=no,
 \DeclareMathOperator{\ins}{ins}
 \DeclareMathOperator{\out}{out}
 
-%% Algebraic number Theory
+%% Algebraic number theory
 \DeclareMathOperator{\Frob}{Frob}
 
 %% Algebraic topology
@@ -693,19 +670,19 @@ numbered=no,
 \newcommand{\varbfRP}{\bfR\rmP}
 
 %%% Analysis
-%% Metric Spaces
+%% Metric spaces
 \DeclareMathOperator{\diam}{diam}
 \DeclareMathOperator{\dist}{dist}
 \DeclareMathOperator{\Isom}{Isom}
 \DeclareMathOperator{\supp}{supp}
 \DeclareMathOperator{\Supp}{Supp}
 
-%% Real Analysis
+%% Real analysis
 \DeclareMathOperator{\Lip}{Lip}
 \newcommand\der{\mathop{}\!d}
 \DeclareMathOperator{\var}{var}
 
-%% Complex Analysis
+%% Complex analysis
 \DeclareMathOperator{\Arg}{Arg}
 \renewcommand\Im{\operatorname{Im}}
 \renewcommand\Re{\operatorname{Re}}
@@ -714,25 +691,23 @@ numbered=no,
 \DeclareMathOperator{\res}{res}
 \DeclareMathOperator{\Res}{Res}
 
-%% Multivariable Calculus
+%% Multivariable calculus
 \DeclareMathOperator{\curl}{curl}
 \let\division\div
 \renewcommand{\div}{\operatorname{div}}
 \DeclareMathOperator{\grad}{grad}
 
-%% Measure Theory
+%% Measure theory
 \DeclareMathOperator{\vol}{vol}
 \DeclareMathOperator{\Vol}{Vol}
 
-%% Probability and Statistics
+%% Probability and statistics
 \DeclareMathOperator{\corr}{corr}
 \DeclareMathOperator{\Corr}{Corr}
 \DeclareMathOperator{\cov}{cov}
 \DeclareMathOperator{\Cov}{Cov}
 \DeclareMathOperator{\erf}{erf}
 \DeclareMathOperator{\Var}{Var}
-\DeclareMathOperator*{\argmin}{arg\,min}
-\DeclareMathOperator*{\argmax}{arg\,max}
 
 %%% Distributions (continuous and dicrete)
 \DeclareMathOperator{\Bernoulli}{Bernoulli}
@@ -757,10 +732,10 @@ numbered=no,
 \DeclareMathOperator{\Uniform}{Uniform}
 
 %% Functional Analysis
-\DeclareMathOperator*{\dirlim}{dir\,lim}
-\DeclareMathOperator*{\invlim}{inv\,lim}
-\DeclareMathOperator*{\esssup}{ess\,sup}
-\DeclareMathOperator*{\essinf}{ess\,inf}
+\DeclareMathOperator*{\dirlim}{dir\, lim}
+\DeclareMathOperator*{\invlim}{inv\, lim}
+\DeclareMathOperator*{\esssup}{ess\, sup}
+\DeclareMathOperator*{\essinf}{ess\, inf}
 
 %%% Math alphabet 
 \newcommand{\rma}{\mathrm{a}}
