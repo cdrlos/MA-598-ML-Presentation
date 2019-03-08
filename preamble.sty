@@ -34,7 +34,7 @@
 \let\K\bbK
 \let\R\bbR
 \let\C\bbC
-\let\H\bbH
+\let\Ham\bbH
 \let\RP\bbRP
 \let\CP\bbCP
 \let\HP\bbHP
@@ -76,7 +76,8 @@
 \RequirePackage[cal=euler,scr=rsfso]{mathalfa}
 
 \if@sans
-\RequirePackage{sansmathfonts}
+\RequirePackage{sansmath}
+\sansmath
 \fi
 
 %% Have the beamer Math punctuation match the sans font of the document 
@@ -526,8 +527,8 @@ numbered=no,
 \newcommand{\psu}{\mathfrak{psu}}
 \newcommand{\psl}{\mathfrak{psl}}
 \newcommand{\psp}{\mathfrak{psp}}
-\renewcommand{\o}{\mathfrak{o}}
-\renewcommand{\u}{\mathfrak{u}}
+\renewcommand{\oo}{\mathfrak{o}}
+\renewcommand{\uu}{\mathfrak{u}}
 
 %% Linear Algebra
 \DeclareMathOperator{\Ad}{Ad}
