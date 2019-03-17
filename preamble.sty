@@ -440,8 +440,9 @@ numbered=no,
 }%
 {\end{smallmatrix}\right)}
 
-%%% Operators by category 
-%% Set theory
+
+%%% Custom operators loosely organized by subject
+%% Basic
 \DeclareMathOperator{\card}{card}
 \DeclareMathOperator{\Card}{Card}
 \DeclareMathOperator{\codom}{codom}
@@ -454,23 +455,204 @@ numbered=no,
 \DeclareMathOperator{\Graph}{Graph}
 \DeclareMathOperator{\preim}{preim}
 \DeclareMathOperator{\Preim}{Preim}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Sgn}{Sgn}
 
-%% Number theory
+%% Elementary number theory
 \DeclareMathOperator*{\lcm}{lcm}
 \DeclareMathOperator{\disc}{disc}
 \DeclareMathOperator{\Disc}{Disc}
 \DeclareMathOperator{\Nm}{Nm}
 
-%%% Category theory
+%% Linear algebra
+\DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\Adj}{Adj}
+\DeclareMathOperator{\adj}{adj}
+\DeclareMathOperator{\Det}{Det}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Mat}{Mat}
+\DeclareMathOperator{\nul}{null}
+\DeclareMathOperator{\Nul}{Null}
+\DeclareMathOperator{\proj}{proj}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\Ran}{Ran}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Rank}{Rank}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\Rk}{Rk}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\SPAN}{Span}
+
+%% Elementary topology
 \DeclareMathOperator{\ev}{ev}
 \DeclareMathOperator{\Ev}{Ev}
 \DeclareMathOperator{\eval}{eval}
 \DeclareMathOperator{\Eval}{Eval}
-\DeclareMathOperator{\Hom}{Hom}
-\DeclareMathOperator{\Id}{Id}
-\DeclareMathOperator{\id}{id}
-\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\cl}{cl}
+\DeclareMathOperator{\Cl}{Cl}
+\DeclareMathOperator{\intr}{int}
+\DeclareMathOperator{\inter}{int}
+\DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\ins}{ins}
+\DeclareMathOperator{\out}{out}
 
+%% Elementary analysis
+\DeclareMathOperator*{\esssup}{ess\, sup}
+\DeclareMathOperator*{\essinf}{ess\, inf}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\Supp}{Supp}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\Lip}{Lip}
+\newcommand\der{\mathop{}\!d}
+\DeclareMathOperator{\var}{var}
+\DeclareMathOperator{\vol}{vol}
+\DeclareMathOperator{\Vol}{Vol}
+
+%% Elementary differential geometry
+\DeclareMathOperator{\curl}{curl}
+\let\division\div
+\renewcommand{\div}{\operatorname{div}}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\Der}{Der}
+\DeclareMathOperator{\Diff}{Diff}
+\DeclareMathOperator{\Hess}{Hess}
+\DeclareMathOperator{\VEC}{Vec}
+\DeclareMathOperator{\ind}{ind}
+
+%% One-variable complex analysis
+\DeclareMathOperator{\Arg}{Arg}
+\renewcommand\Im{\operatorname{Im}}
+\renewcommand\Re{\operatorname{Re}}
+\DeclareMathOperator{\Log}{Log}
+\DeclareMathOperator{\Ln}{Ln}
+\DeclareMathOperator{\res}{res}
+\DeclareMathOperator{\Res}{Res}
+
+%% Probability and statistics
+\DeclareMathOperator{\corr}{corr}
+\DeclareMathOperator{\Corr}{Corr}
+\DeclareMathOperator{\cov}{cov}
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\erf}{erf}
+\DeclareMathOperator{\Var}{Var}
+
+%% Abstract algebra
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\Inn}{Inn}
+\DeclareMathOperator{\Out}{Out}
+\DeclareMathOperator{\Orb}{Orb}
+\DeclareMathOperator{\Stab}{Stab}
+
+%% Representation theory
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\Irr}{Irr}
+\DeclareMathOperator{\Alt}{Alt}
+\DeclareMathOperator{\Sym}{Sym}
+
+%% Commutative algebra
+\DeclareMathOperator{\ann}{ann}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Bil}{Bil}
+\DeclareMathOperator{\Coker}{Coker}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Ass}{Ass}
+\DeclareMathOperator{\Class}{Class}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Frac}{Frac}
+\DeclareMathOperator{\Jac}{Jac}
+\DeclareMathOperator{\nil}{nil}
+\DeclareMathOperator{\Nil}{Nil}
+\DeclareMathOperator{\Quot}{Quot}
+\DeclareMathOperator{\rad}{rad}
+\DeclareMathOperator{\Rad}{Rad}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\mSpec}{\frakm-Spec}
+\DeclareMathOperator{\MSpec}{MaxSpec}
+\DeclareMathOperator{\Tor}{Tor}
+
+%% Number theory
+\DeclareMathOperator{\Ch}{ch}
+\DeclareMathOperator{\Char}{char}
+\DeclareMathOperator{\sepdeg}{sep\,deg}
+\DeclareMathOperator{\Sepdeg}{Sep\,Deg}
+\DeclareMathOperator{\trdeg}{trans\,deg}
+\DeclareMathOperator{\Trdeg}{Trans\,Deg}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\Div}{Div}
+\DeclareMathOperator{\Frob}{Frob}
+
+%% Category theory
+\DeclareMathOperator*{\dirlim}{dir\, lim}
+\DeclareMathOperator*{\invlim}{inv\, lim}
+
+%% Group theory
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\Mono}{Mono}
+\DeclareMathOperator{\Epi}{Epi}
+\DeclareMathOperator{\Syl}{Syl}
+\DeclareMathOperator{\Fra}{Fra}
+\DeclareMathOperator{\Ab}{Ab}
+\DeclareMathOperator{\Isom}{Isom}
+\DeclareMathOperator{\FQ}{FQ}
+
+%% Model theory
+\DeclareMathOperator{\Th}{Th}
+\DeclareMathOperator{\hal}{hal}
+\DeclareMathOperator{\shad}{sh}
+
+%% Algebraic topology
+\DeclareMathOperator{\Homeo}{Homeo}
+\DeclareMathOperator{\St}{St}
+\DeclareMathOperator{\Sq}{Sq}
+\DeclareMathOperator{\Gr}{Gr}
+
+%% Moduli spaces
+\DeclareMathOperator{\Mod}{Mod}
+\DeclareMathOperator{\Teich}{Teich}
+\DeclareMathOperator{\QConf}{QConf}
+
+%% Riemannian geometry
+\DeclareMathOperator{\Ric}{Ric}
+\DeclareMathOperator{\Rm}{Rm}
+
+%% Algebraic geometry
+\DeclareMathOperator{\Pic}{Pic}
+\DeclareMathOperator{\Shef}{Shef}
+
+%% Symbols and special notation
+%%% Distributions (continuous and dicrete)
+\DeclareMathOperator{\Bernoulli}{Bernoulli}
+\DeclareMathOperator{\Ber}{Ber}
+\DeclareMathOperator{\Be}{Be}
+\DeclareMathOperator{\Binomial}{Binomial}
+\DeclareMathOperator{\Bin}{Bin}
+\DeclareMathOperator{\Cauchy}{Cauchy}
+\DeclareMathOperator{\Exponential}{Exponential}
+\DeclareMathOperator{\Exp}{Exp}
+\DeclareMathOperator{\Gaussian}{Gaussian}
+\DeclareMathOperator{\GAMMA}{Gamma}
+\DeclareMathOperator{\Geometric}{Geomtric}
+\DeclareMathOperator{\Geo}{Geo}
+\DeclareMathOperator{\Hypergeometric}{Hypergeometric}
+\DeclareMathOperator{\Hypergeo}{Hypergeo}
+\DeclareMathOperator{\NegBinom}{NegBinom}
+\DeclareMathOperator{\NB}{\mathit{NB}}
+\DeclareMathOperator{\Normal}{Normal}
+\DeclareMathOperator{\Poisson}{Poisson}
+\DeclareMathOperator{\Poi}{Poi}
+\DeclareMathOperator{\Uniform}{Uniform}
+
+%%% Category theory
 \newcommand{\blank}{{{}\cdot{}}} % useful for categories
 \newcommand{\blk}{{{}\cdot{}}} % useful for categories
 \DeclareMathOperator*{\rel}{\mathop{rel}}
@@ -530,135 +712,6 @@ numbered=no,
 \newcommand{\oo}{\mathfrak{o}}
 \newcommand{\uu}{\mathfrak{u}}
 
-%% Linear Algebra
-\DeclareMathOperator{\Ad}{Ad}
-\DeclareMathOperator{\ad}{ad}
-\DeclareMathOperator{\Adj}{Adj}
-\DeclareMathOperator{\adj}{adj}
-\DeclareMathOperator{\Alt}{Alt}
-\DeclareMathOperator{\ann}{ann}
-\DeclareMathOperator{\Ann}{Ann}
-\DeclareMathOperator{\Bil}{Bil}
-\DeclareMathOperator{\Coker}{Coker}
-\DeclareMathOperator{\coker}{coker}
-\DeclareMathOperator{\Det}{Det}
-\DeclareMathOperator{\diag}{diag}
-\DeclareMathOperator{\End}{End}
-\DeclareMathOperator{\Mat}{Mat}
-\DeclareMathOperator{\nul}{null}
-\DeclareMathOperator{\Nul}{Null}
-\DeclareMathOperator{\proj}{proj}
-\DeclareMathOperator{\tr}{tr}
-\DeclareMathOperator{\Tr}{Tr}
-\DeclareMathOperator{\ran}{ran}
-\DeclareMathOperator{\Ran}{Ran}
-\DeclareMathOperator{\rank}{rank}
-\DeclareMathOperator{\Rank}{Rank}
-\DeclareMathOperator{\rk}{rk}
-\DeclareMathOperator{\Rk}{Rk}
-\DeclareMathOperator{\Span}{span}
-\DeclareMathOperator{\SPAN}{Span}
-\DeclareMathOperator{\Sym}{Sym}
-
-%% Group theory
-\DeclareMathOperator{\Dim}{Dim}
-\DeclareMathOperator{\FQ}{FQ}
-\DeclareMathOperator{\ord}{ord}
-% \DeclareMathOperator{\Ord}{Ord}
-\DeclareMathOperator{\sgn}{sgn}
-\DeclareMathOperator{\Sgn}{Sgn}
-\DeclareMathOperator{\Syl}{Syl}
-
-%% Model theory
-\DeclareMathOperator{\Th}{Th}
-
-%% Hyperreals
-\DeclareMathOperator{\hal}{hal}
-\DeclareMathOperator{\shad}{sh}
-
-%% Group actions and representation theory
-\DeclareMathOperator{\Aut}{Aut}
-\DeclareMathOperator{\Fix}{Fix}
-\DeclareMathOperator{\Inn}{Inn}
-\DeclareMathOperator{\Out}{Out}
-\DeclareMathOperator{\Orb}{Orb}
-\DeclareMathOperator{\Stab}{Stab}
-
-%% Ring theory and commutative algebra
-\DeclareMathOperator{\Ass}{Ass}
-\DeclareMathOperator{\Class}{Class}
-\DeclareMathOperator{\Ext}{Ext}
-\DeclareMathOperator{\Frac}{Frac}
-\DeclareMathOperator{\Irr}{Irr}
-\DeclareMathOperator{\Jac}{Jac}
-\DeclareMathOperator{\nil}{nil}
-\DeclareMathOperator{\Nil}{Nil}
-\DeclareMathOperator{\Quot}{Quot}
-\DeclareMathOperator{\rad}{rad}
-\DeclareMathOperator{\Rad}{Rad}
-\DeclareMathOperator{\Spec}{Spec}
-\DeclareMathOperator{\mSpec}{\frakm-Spec}
-\DeclareMathOperator{\MSpec}{MaxSpec}
-\DeclareMathOperator{\Tor}{Tor}
-
-%% Field theory and Galois theory
-\DeclareMathOperator{\Ch}{ch}
-\DeclareMathOperator{\Char}{char}
-\DeclareMathOperator{\sepdeg}{sep\,deg}
-\DeclareMathOperator{\Sepdeg}{Sep\,Deg}
-\DeclareMathOperator{\trdeg}{trans\,deg}
-\DeclareMathOperator{\Trdeg}{Trans\,Deg}
-\DeclareMathOperator{\Gal}{Gal}
-\DeclareMathOperator{\Div}{Div}
-\DeclareMathOperator{\Prin}{Prin}
-
-%%% Geometry and topology
-%% Topology
-\DeclareMathOperator{\cl}{cl}
-\DeclareMathOperator{\Cl}{Cl}
-\DeclareMathOperator{\intr}{int}
-\DeclareMathOperator{\inter}{int}
-\DeclareMathOperator{\Int}{Int}
-\DeclareMathOperator{\ins}{ins}
-\DeclareMathOperator{\out}{out}
-
-%% Algebraic number theory
-\DeclareMathOperator{\Frob}{Frob}
-
-%% Algebraic topology
-\DeclareMathOperator{\Hml}{H}
-\DeclareMathOperator{\St}{St}
-\DeclareMathOperator{\Sq}{Sq}
-\DeclareMathOperator{\wind}{wind}
-\DeclareMathOperator{\Fund}{\pi}
-\DeclareMathOperator{\Gr}{Gr}
-
-%% Algebraic geometry
-\DeclareMathOperator{\Pic}{Pic}
-\DeclareMathOperator{\Shef}{Shef}
-
-%% Moduli Spaces
-\DeclareMathOperator{\Homeo}{Homeo}
-\DeclareMathOperator{\Mod}{Mod}
-\DeclareMathOperator{\QConf}{QConf}
-\DeclareMathOperator{\Teich}{Teich}
-
-%% Differential geometry
-\DeclareMathOperator{\Tsp}{T}
-\DeclareMathOperator{\Nsp}{N}
-\DeclareMathOperator{\Der}{Der}
-\DeclareMathOperator{\Diff}{Diff}
-\DeclareMathOperator{\Hess}{Hess}
-\DeclareMathOperator{\Tan}{Tan}
-\DeclareMathOperator{\Cotan}{Cotan}
-\DeclareMathOperator{\VEC}{Vec}
-\DeclareMathOperator{\ind}{ind}
-\DeclareMathOperator{\Ind}{Ind}
-
-%% Riemannian geometry
-\DeclareMathOperator{\Ric}{Ric}
-\DeclareMathOperator{\Rm}{Rm}
-
 %% Topological spaces
 \newcommand{\bbCP}{{\bbC}\itP}
 \newcommand{\bbHP}{{\bbH}\itP}
@@ -672,74 +725,6 @@ numbered=no,
 \newcommand{\varbfCP}{\bfC\rmP}
 \newcommand{\varbfHP}{\bfH\rmP}
 \newcommand{\varbfRP}{\bfR\rmP}
-
-%%% Analysis
-%% Metric spaces
-\DeclareMathOperator{\diam}{diam}
-\DeclareMathOperator{\dist}{dist}
-\DeclareMathOperator{\Isom}{Isom}
-\DeclareMathOperator{\supp}{supp}
-\DeclareMathOperator{\Supp}{Supp}
-
-%% Real analysis
-\DeclareMathOperator{\Lip}{Lip}
-\newcommand\der{\mathop{}\!d}
-\DeclareMathOperator{\var}{var}
-
-%% Complex analysis
-\DeclareMathOperator{\Arg}{Arg}
-\renewcommand\Im{\operatorname{Im}}
-\renewcommand\Re{\operatorname{Re}}
-\DeclareMathOperator{\Log}{Log}
-\DeclareMathOperator{\Ln}{Ln}
-\DeclareMathOperator{\res}{res}
-\DeclareMathOperator{\Res}{Res}
-
-%% Multivariable calculus
-\DeclareMathOperator{\curl}{curl}
-\let\division\div
-\renewcommand{\div}{\operatorname{div}}
-\DeclareMathOperator{\grad}{grad}
-
-%% Measure theory
-\DeclareMathOperator{\vol}{vol}
-\DeclareMathOperator{\Vol}{Vol}
-
-%% Probability and statistics
-\DeclareMathOperator{\corr}{corr}
-\DeclareMathOperator{\Corr}{Corr}
-\DeclareMathOperator{\cov}{cov}
-\DeclareMathOperator{\Cov}{Cov}
-\DeclareMathOperator{\erf}{erf}
-\DeclareMathOperator{\Var}{Var}
-
-%%% Distributions (continuous and dicrete)
-\DeclareMathOperator{\Bernoulli}{Bernoulli}
-\DeclareMathOperator{\Ber}{Ber}
-\DeclareMathOperator{\Be}{Be}
-\DeclareMathOperator{\Binomial}{Binomial}
-\DeclareMathOperator{\Bin}{Bin}
-\DeclareMathOperator{\Cauchy}{Cauchy}
-\DeclareMathOperator{\Exponential}{Exponential}
-\DeclareMathOperator{\Exp}{Exp}
-\DeclareMathOperator{\Gaussian}{Gaussian}
-\DeclareMathOperator{\GAMMA}{Gamma}
-\DeclareMathOperator{\Geometric}{Geomtric}
-\DeclareMathOperator{\Geo}{Geo}
-\DeclareMathOperator{\Hypergeometric}{Hypergeometric}
-\DeclareMathOperator{\Hypergeo}{Hypergeo}
-\DeclareMathOperator{\NegBinom}{NegBinom}
-\DeclareMathOperator{\NB}{\mathit{NB}}
-\DeclareMathOperator{\Normal}{Normal}
-\DeclareMathOperator{\Poisson}{Poisson}
-\DeclareMathOperator{\Poi}{Poi}
-\DeclareMathOperator{\Uniform}{Uniform}
-
-%% Functional Analysis
-\DeclareMathOperator*{\dirlim}{dir\, lim}
-\DeclareMathOperator*{\invlim}{inv\, lim}
-\DeclareMathOperator*{\esssup}{ess\, sup}
-\DeclareMathOperator*{\essinf}{ess\, inf}
 
 %%% Math alphabet 
 \newcommand{\rma}{\mathrm{a}}
